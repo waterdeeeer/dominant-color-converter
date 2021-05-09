@@ -1,1 +1,3 @@
-export const Greeter = (name: string) => `Hello ${name}`;
+import Converter from './converter';
+
+export default Converter;
