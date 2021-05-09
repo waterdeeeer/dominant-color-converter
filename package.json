@@ -1,6 +1,6 @@
 {
   "name": "dominant-color-converter",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A customizable dominant color picker from an image",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
