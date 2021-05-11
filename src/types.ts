@@ -6,3 +6,4 @@ export interface Palette {
   lightVibrant?: string;
   lightMuted?: string;
 }
+export type CustomColor = `#${string}`;

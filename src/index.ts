@@ -1,4 +1,4 @@
 import Converter from './converter';
-import { Palette } from './palette';
+import { Palette } from './types';
 export default Converter;
 export { Palette };

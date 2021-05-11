@@ -1,9 +1,16 @@
 import Vibrant = require('node-vibrant');
-import { Palette } from './palette';
-type CustomColor = HexCharacter[6];
-type HexCharacter = 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9';
+import { Palette, CustomColor } from './types';
+import { validateCustomColors } from './validation';
+//User's ColorList to Hex
+//url이 잘못들어온경우
+//
 class Converter {
   constructor(public customColorList?: CustomColor[]) {
+    if (customColorList) {
+      if (!validateCustomColors(customColorList)) {
+        throw new Error('CustomColor should be "#ffffff" form.');
+      }
+    }
     this.customColorList = customColorList;
   }
   private async _getOriginalPalette(url: string): Promise<Palette> {
@@ -33,6 +40,9 @@ class Converter {
   }
   public async convert(url: string): Promise<Palette> {
     const originalPalette = await this._getOriginalPalette(url);
+    if (!this.customColorList) {
+      return originalPalette;
+    }
     const originalColors: string[] = Object.values(originalPalette);
     const convertedColors: string[] = originalColors.map((color: string) => {
       return this._compareColors(color);
