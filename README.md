@@ -34,6 +34,5 @@ But if none of those apply, with npm do:
 
 ## Notes
 
----
 
 This library was made using [node-vibrant](https://github.com/Vibrant-Colors/node-vibrant.git).
