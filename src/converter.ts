@@ -1,9 +1,7 @@
 import Vibrant = require('node-vibrant');
 import { Palette, CustomColor } from './types';
 import { validateCustomColors } from './validation';
-//User's ColorList to Hex
-//url이 잘못들어온경우
-//
+
 class Converter {
   constructor(public customColorList?: CustomColor[]) {
     if (customColorList) {
