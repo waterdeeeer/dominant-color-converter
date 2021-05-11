@@ -8,8 +8,8 @@ class Converter {
       if (!validateCustomColors(customColorList)) {
         throw new Error('CustomColor should be "#ffffff" form.');
       }
+      this.customColorList = customColorList;
     }
-    this.customColorList = customColorList;
   }
   private async _getOriginalPalette(url: string): Promise<Palette> {
     const vibrant = Vibrant.from(url);
@@ -28,7 +28,7 @@ class Converter {
     originalColors = originalColors.slice(1);
     const numOriginalColor: number = parseInt(originalColors, 16);
     const numCustomColorList: number[] = this.customColorList!.map((customColor) => {
-      return parseInt(customColor, 16);
+      return parseInt(customColor.slice(1), 16);
     });
     const differences: number[] = numCustomColorList.map((customColor) => {
       return Math.abs(numOriginalColor - customColor);
